@@ -13,5 +13,5 @@ public class Hard extends Question {
     public Hard(Answers ans, int questionNumber, String hardQuestion){
         super(ans, questionNumber);
         this.hardQuestion = hardQuestion;
-    }
+    } 
 }
