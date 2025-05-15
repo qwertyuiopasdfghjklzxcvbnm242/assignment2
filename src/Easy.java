@@ -13,10 +13,13 @@ public class Easy extends Question{
     private int questionNumber;
     private String easyQuestion;
     private int points;
-    public Easy (Answers ans, int questionNumber, String question){
+    public Easy (Answers ans, int questionNumber, String easyQuestion){
         super(ans, questionNumber);
         this.points = EASY_POINTS;
         this.easyQuestion = easyQuestion;
+    }
+    public String getQuestion(){
+        return easyQuestion
     }
     
 }

@@ -16,6 +16,9 @@ public class MainProgram extends javax.swing.JFrame {
     int easyCount = 0;
     int midCount = 0;
     int hardCount = 0;
+    Easy [] easyQuestions = new Easy[10];
+    mid [] midQuestions = new mid[10];
+    Hard [] hardQuestions = new Hard[10];
     /**
      * Creates new form NewJFrame
      */
@@ -163,53 +166,45 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
-        // Declare variables
-        int lines = countLines();
-        String [] easyQ = easyQuestions(lines);
-        header.setText(easyQ[easyCount]);
-        if (easyCount < easyQ.length - 1){
-            easyCount++; //Cycle through questions
-        } else {
-            header.setText("No more easy!"); // When Finished
+        int lines = countLines("easy");
+        String [] easyQ = take(lines, "easy");
+        String [] easyA = take(lines, "easyAns");
+        int [] easyAnswers = new int [easyA.length];
+        boolean [] bool = new boolean [easyA.length];
+        for (int i = 0; i < easyAnswers.length;i++){
+            easyAnswers[i] = Integer.parseInt(easyA[i]);
+            if(easyAnswers[0] == 0){
+                bool[i] = true;
+            } else {
+                bool[i] = false;
+            }
         }
-        
+        for (int i = 0; i<easyQ.length;i++){
+            Answers answer = new Answers(bool[i]);
+            easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
+        }
+        header.setText(easyQuestions[easyCount].getQuestion());
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
-        // Declare variables
-        int lines = countLines();
-        String [] midQ = midQuestions(lines);
-        header.setText(midQ[midCount]);
-        if (midCount < midQ.length - 1){
-            midCount++; //Cycle through questions
-        } else {
-            header.setText("No more easy!"); // When Finished
-        }
+
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
-        // Declare variables
-        int lines = countLines();
-        String [] hardQ = hardQuestions(lines);
-        header.setText(hardQ[hardCount]);
-        if (midCount < hardQ.length - 1){
-            midCount++; //Cycle through questions
-        } else {
-            header.setText("No more easy!"); // When Finished
-        }
+
     }//GEN-LAST:event_nextHardActionPerformed
 
     /**
      * Counts line in file
      * @return lineCount
      */
-    private int countLines(){
+    private int countLines(String filename){
         // Declare Variables
         int lineCount = 0;
         // Try catch
         try {
             // Loop through data.txt if there is a next line
-            Scanner fileInput = new Scanner(new File("data.txt"));
+            Scanner fileInput = new Scanner(new File(filename));
             while (fileInput.hasNextLine()){
                 fileInput.nextLine();
                 lineCount++; // Add one to counter 
@@ -226,18 +221,18 @@ public class MainProgram extends javax.swing.JFrame {
      * @param lineCount This creates the array size
      * @return questions This holds the questions in an array
      */
-    private String [] easyQuestions(int lineCount){
+    private String [] take(int lineCount, String filename){
         // Declare Variables
         int count = 0;
-        String [] easyQuestions = new String [lineCount];
+        String [] Q = new String [lineCount];
         // Try catch
          try{
              // Loop through data.txt and store questions
-            Scanner fileInput = new Scanner(new File("Easy.txt"));
+            Scanner fileInput = new Scanner(new File(filename));
             while(fileInput.hasNext()){
                 String output = fileInput.nextLine();
                 // Store values
-                easyQuestions[count] = output;
+                Q[count] = output;
                 count++; // Add to counter
             }
         } catch (IOException e){
@@ -246,62 +241,9 @@ public class MainProgram extends javax.swing.JFrame {
             System.err.println("Java Exception: " + p);
         }
 
-        return easyQuestions; // Return array
+        return Q; // Return array
     }
-     /**
-     * Take questions from file
-     * @param lineCount This creates the array size
-     * @return questions This holds the questions in an array
-     */
-    private String [] midQuestions(int lineCount){
-        // Declare Variables
-        int count = 0;
-        String [] midQuestions = new String [lineCount];
-        // Try catch
-         try{
-             // Loop through data.txt and store questions
-            Scanner fileInput = new Scanner(new File("Easy.txt"));
-            while(fileInput.hasNext()){
-                String output = fileInput.nextLine();
-                // Store values
-                midQuestions[count] = output;
-                count++; // Add to counter
-            }
-        } catch (IOException e){
-            System.err.println("Java Exception: " + e);
-        } catch (StringIndexOutOfBoundsException p) {
-            System.err.println("Java Exception: " + p);
-        }
 
-        return midQuestions; // Return array
-    }
-    /**
-     * Take questions from file
-     * @param lineCount This creates the array size
-     * @return questions This holds the questions in an array
-     */
-    private String [] hardQuestions(int lineCount){
-        // Declare Variables
-        int count = 0;
-        String [] hardQuestions = new String [lineCount];
-        // Try catch
-         try{
-             // Loop through data.txt and store questions
-            Scanner fileInput = new Scanner(new File("Easy.txt"));
-            while(fileInput.hasNext()){
-                String output = fileInput.nextLine();
-                // Store values
-                hardQuestions[count] = output;
-                count++; // Add to counter
-            }
-        } catch (IOException e){
-            System.err.println("Java Exception: " + e);
-        } catch (StringIndexOutOfBoundsException p) {
-            System.err.println("Java Exception: " + p);
-        }
-
-        return hardQuestions; // Return array
-    }
     
     
     
