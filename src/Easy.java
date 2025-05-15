@@ -19,7 +19,7 @@ public class Easy extends Question{
         this.easyQuestion = easyQuestion;
     }
     public String getQuestion(){
-        return easyQuestion
+        return easyQuestion;
     }
     
 }

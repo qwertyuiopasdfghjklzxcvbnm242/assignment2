@@ -37,12 +37,12 @@ public class MainProgram extends javax.swing.JFrame {
 
         fake = new javax.swing.JButton();
         real = new javax.swing.JButton();
-        header = new javax.swing.JTextField();
         nextEasy = new javax.swing.JButton();
         nextMid = new javax.swing.JButton();
         nextHard = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        header = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,13 +61,6 @@ public class MainProgram extends javax.swing.JFrame {
         real.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 realActionPerformed(evt);
-            }
-        });
-
-        header.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        header.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                headerActionPerformed(evt);
             }
         });
 
@@ -101,6 +94,9 @@ public class MainProgram extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Question");
 
+        header.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,23 +118,23 @@ public class MainProgram extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(202, 202, 202))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,10 +152,6 @@ public class MainProgram extends javax.swing.JFrame {
     private void fakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fakeActionPerformed
-
-    private void headerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_headerActionPerformed
 
     private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
         // TODO add your handling code here:
@@ -183,11 +175,26 @@ public class MainProgram extends javax.swing.JFrame {
             Answers answer = new Answers(bool[i]);
             easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
         }
-        header.setText(easyQuestions[easyCount].getQuestion());
+       
+        header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
+        if (easyCount > easyQuestions.length - 1){
+            easyCount++;
+        } else {
+            header.setText("No more easy!");
+        }
+        
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
-
+        int lines = countLines("easy");
+        String [] easyQ = take(lines, "easy");
+        String [] easyA = take(lines, "easyAns");
+        int [] easyAnswers = new int [easyA.length];
+        boolean [] bool = new boolean [easyA.length];
+        for (int i = 0 ; i < easyQ.length; i ++){
+            System.out.println(easyQ[i]);
+        }
+        
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
@@ -290,7 +297,7 @@ public class MainProgram extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fake;
-    private javax.swing.JTextField header;
+    private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton nextEasy;
