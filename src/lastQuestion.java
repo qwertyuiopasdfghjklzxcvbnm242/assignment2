@@ -148,42 +148,11 @@ public class lastQuestion extends javax.swing.JFrame {
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
-        int lines = countLines("easy");
-        String [] easyQ = take(lines, "easy");
-        String [] easyA = take(lines, "easyAns");
-        int [] easyAnswers = new int [easyA.length];
-        boolean [] bool = new boolean [easyA.length];
-        for (int i = 0; i < easyAnswers.length;i++){
-            easyAnswers[i] = Integer.parseInt(easyA[i]);
-            if(easyAnswers[0] == 0){
-                bool[i] = true;
-            } else {
-                bool[i] = false;
-            }
-        }
-        for (int i = 0; i<easyQ.length;i++){
-            Answers answer = new Answers(bool[i]);
-            easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
-        }
-
-        header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
-        if (easyCount > easyQuestions.length - 1){
-            easyCount++;
-        } else {
-            header.setText("No more easy!");
-        }
 
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void feedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackActionPerformed
-        int lines = countLines("easy");
-        String [] easyQ = take(lines, "easy");
-        String [] easyA = take(lines, "easyAns");
-        int [] easyAnswers = new int [easyA.length];
-        boolean [] bool = new boolean [easyA.length];
-        for (int i = 0 ; i < easyQ.length; i ++){
-            System.out.println(easyQ[i]);
-        }
+
 
     }//GEN-LAST:event_feedbackActionPerformed
 
