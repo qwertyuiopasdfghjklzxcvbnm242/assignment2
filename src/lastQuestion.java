@@ -1,8 +1,3 @@
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,19 +5,14 @@ import java.util.Scanner;
 
 /**
  *
- * @author 242353497
+ * @author 344165857
  */
-public class MainProgram extends javax.swing.JFrame {
-    int easyCount = 0;
-    int midCount = 0;
-    int hardCount = 0;
-    Easy [] easyQuestions = new Easy[10];
-    mid [] midQuestions = new mid[10];
-    Hard [] hardQuestions = new Hard[10];
+public class lastQuestion extends javax.swing.JFrame {
+
     /**
-     * Creates new form NewJFrame
+     * Creates new form lastQuestion
      */
-    public MainProgram() {
+    public lastQuestion() {
         initComponents();
     }
 
@@ -35,19 +25,38 @@ public class MainProgram extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        feedback = new javax.swing.JLabel();
-        fake = new javax.swing.JButton();
-        real = new javax.swing.JButton();
         nextEasy = new javax.swing.JButton();
-        nextMid = new javax.swing.JButton();
         nextHard = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
+        fake = new javax.swing.JButton();
+        real = new javax.swing.JButton();
+        feedback = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        feedback.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nextEasy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nextEasy.setText("Next Easy");
+        nextEasy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextEasyActionPerformed(evt);
+            }
+        });
+
+        nextHard.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nextHard.setText("Next Hard");
+        nextHard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextHardActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("Question");
+
+        header.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         fake.setBackground(new java.awt.Color(255, 0, 51));
         fake.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -67,66 +76,40 @@ public class MainProgram extends javax.swing.JFrame {
             }
         });
 
-        nextEasy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nextEasy.setText("Next Easy");
-        nextEasy.addActionListener(new java.awt.event.ActionListener() {
+        feedback.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        feedback.setText("Feedback");
+        feedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextEasyActionPerformed(evt);
-            }
-        });
-
-        nextMid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nextMid.setText("Next Mid");
-        nextMid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextMidActionPerformed(evt);
-            }
-        });
-
-        nextHard.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nextHard.setText("Next Hard");
-        nextHard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextHardActionPerformed(evt);
+                feedbackActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Points");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Question");
-
-        header.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(nextEasy)
-                .addGap(140, 140, 140)
-                .addComponent(nextMid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nextHard)
-                .addGap(111, 111, 111))
+                .addGap(308, 308, 308)
+                .addComponent(feedback)
+                .addGap(111, 349, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(158, 158, 158)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(165, 165, 165)
-                                        .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(217, Short.MAX_VALUE))
+                                .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(165, 165, 165)
+                                .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(164, 164, 164))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202))))
@@ -136,19 +119,20 @@ public class MainProgram extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nextEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nextMid, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nextHard, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(feedback, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
@@ -181,17 +165,17 @@ public class MainProgram extends javax.swing.JFrame {
             Answers answer = new Answers(bool[i]);
             easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
         }
-       
+
         header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
         if (easyCount > easyQuestions.length - 1){
             easyCount++;
         } else {
             header.setText("No more easy!");
         }
-        
+
     }//GEN-LAST:event_nextEasyActionPerformed
 
-    private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
+    private void feedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackActionPerformed
         int lines = countLines("easy");
         String [] easyQ = take(lines, "easy");
         String [] easyA = take(lines, "easyAns");
@@ -200,71 +184,13 @@ public class MainProgram extends javax.swing.JFrame {
         for (int i = 0 ; i < easyQ.length; i ++){
             System.out.println(easyQ[i]);
         }
-        
-    }//GEN-LAST:event_nextMidActionPerformed
+
+    }//GEN-LAST:event_feedbackActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
 
     }//GEN-LAST:event_nextHardActionPerformed
 
-    /**
-     * Counts line in file
-     * @return lineCount
-     */
-    private int countLines(String filename){
-        // Declare Variables
-        int lineCount = 0;
-        // Try catch
-        try {
-            // Loop through data.txt if there is a next line
-            Scanner fileInput = new Scanner(new File(filename));
-            while (fileInput.hasNextLine()){
-                fileInput.nextLine();
-                lineCount++; // Add one to counter 
-            }
-            fileInput.close(); // Close scanner
-            
-        } catch(IOException e){
-            System.out.print("Java Exception" + e);
-        }
-        return lineCount; // Return lineCount
-    }
-    /**
-     * Take questions from file
-     * @param lineCount This creates the array size
-     * @return questions This holds the questions in an array
-     */
-    private String [] take(int lineCount, String filename){
-        // Declare Variables
-        int count = 0;
-        String [] Q = new String [lineCount];
-        // Try catch
-         try{
-             // Loop through data.txt and store questions
-            Scanner fileInput = new Scanner(new File(filename));
-            while(fileInput.hasNext()){
-                String output = fileInput.nextLine();
-                // Store values
-                Q[count] = output;
-                count++; // Add to counter
-            }
-        } catch (IOException e){
-            System.err.println("Java Exception: " + e);
-        } catch (StringIndexOutOfBoundsException p) {
-            System.err.println("Java Exception: " + p);
-        }
-
-        return Q; // Return array
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -282,34 +208,32 @@ public class MainProgram extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lastQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lastQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lastQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lastQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainProgram().setVisible(true);
+                new lastQuestion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fake;
-    private javax.swing.JLabel feedback;
+    private javax.swing.JButton feedback;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton nextEasy;
     private javax.swing.JButton nextHard;
-    private javax.swing.JButton nextMid;
     private javax.swing.JButton real;
     // End of variables declaration//GEN-END:variables
 }
