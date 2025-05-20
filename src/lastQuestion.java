@@ -77,7 +77,7 @@ public class lastQuestion extends javax.swing.JFrame {
         });
 
         feedback.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        feedback.setText("Feedback");
+        feedback.setText("See Score/Feedback");
         feedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 feedbackActionPerformed(evt);
@@ -91,10 +91,6 @@ public class lastQuestion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(feedback)
-                .addGap(111, 349, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +99,7 @@ public class lastQuestion extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
-                                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(158, 158, 158)
                                 .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,6 +109,10 @@ public class lastQuestion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addComponent(feedback)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +131,9 @@ public class lastQuestion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(64, 64, 64)
                 .addComponent(feedback, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(36, 36, 36))
         );
 
         pack();
