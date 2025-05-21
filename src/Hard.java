@@ -21,6 +21,7 @@ public class Hard extends Question {
         return hardQuestion;
     }
     public int getPoints(){
-        return points;
+        System.out.print(points);
+        return HARD_POINTS;
     }
 }

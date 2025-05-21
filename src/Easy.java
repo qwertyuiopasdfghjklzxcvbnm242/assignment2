@@ -22,7 +22,9 @@ public class Easy extends Question{
         return easyQuestion;
     }
     public int getPoints(){
-        return points;
+        
+        return EASY_POINTS;
+        
     }
     
 }

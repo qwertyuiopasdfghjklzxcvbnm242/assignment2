@@ -21,7 +21,8 @@ public class mid extends Question{
         return midQuestion;
     }
     public int getPoints(){
-        return points;
+        
+        return MID_POINTS;
     }
     
 }

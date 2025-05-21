@@ -244,7 +244,10 @@ public class MainProgram extends javax.swing.JFrame {
             point.setText("" + points);
             allow = false;
         }
-        questionCount++;                   
+        questionCount++;  
+        detectEasy = false;
+        detectMid = false;
+        detectHard = false;
     }//GEN-LAST:event_fakeActionPerformed
 
     private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
@@ -318,11 +321,15 @@ public class MainProgram extends javax.swing.JFrame {
                 hardQuestions[i] = new Hard(answer[i], (i + 1), hardQ[i]);
             }
             if (answer[hardCount].getCorrect()){
+                System.out.print("throguh");
                 points += hardQuestions[hardCount].getPoints();
             }
             point.setText("" + points);
             allow = false;
         }
+        detectEasy = false;
+        detectMid = false;
+        detectHard = false;
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
