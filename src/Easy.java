@@ -21,5 +21,8 @@ public class Easy extends Question{
     public String getQuestion(){
         return easyQuestion;
     }
+    public int getPoints(){
+        return points;
+    }
     
 }

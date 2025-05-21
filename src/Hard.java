@@ -10,8 +10,17 @@
 public class Hard extends Question {
     private static final int HARD_POINTS = 3;
     private String hardQuestion;
+    private int points;
     public Hard(Answers ans, int questionNumber, String hardQuestion){
         super(ans, questionNumber);
         this.hardQuestion = hardQuestion;
+        this.points = HARD_POINTS;
     } 
+    
+    public String getQuestion(){
+        return hardQuestion;
+    }
+    public int getPoints(){
+        return points;
+    }
 }

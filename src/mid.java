@@ -10,11 +10,19 @@
 public class mid extends Question{
     private static final int MID_POINTS = 2;
     private String midQuestion;
+    private int points;
     public mid(Answers ans, int questionNumber, String midQuestion){
         super(ans, questionNumber);
         this.midQuestion = midQuestion;
+        this.points = MID_POINTS;
     }
     
+    public String getQuestion(){
+        return midQuestion;
+    }
+    public int getPoints(){
+        return points;
+    }
     
 }
 

@@ -13,9 +13,15 @@ import java.util.Scanner;
  * @author 242353497
  */
 public class MainProgram extends javax.swing.JFrame {
-    int easyCount = 0;
-    int midCount = 0;
-    int hardCount = 0;
+    int easyCount = -1;
+    int midCount = -1;
+    int hardCount = -1;
+    int points = 0;
+    int questionCount = 0;
+    boolean allow = true;
+    boolean detectEasy = false;
+    boolean detectMid = false;
+    boolean detectHard = false;
     Easy [] easyQuestions = new Easy[10];
     mid [] midQuestions = new mid[10];
     Hard [] hardQuestions = new Hard[10];
@@ -44,6 +50,7 @@ public class MainProgram extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
+        point = new javax.swing.JTextField();
 
         feedback.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -117,7 +124,11 @@ public class MainProgram extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(point, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(158, 158, 158)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +148,9 @@ public class MainProgram extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(point))
                 .addGap(5, 5, 5)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
@@ -156,11 +169,160 @@ public class MainProgram extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakeActionPerformed
-        // TODO add your handling code here:
+        if (detectEasy && allow){
+            int lines = countLines("easy");
+            String [] easyQ = take(lines, "easy");
+            String [] easyA = take(lines, "easyAns");
+            Answers [] answer = new Answers [10];
+            int [] easyAnswers = new int [easyA.length];
+            boolean [] bool = new boolean [easyA.length];
+            for (int i = 0; i < easyAnswers.length;i++){
+                easyAnswers[i] = Integer.parseInt(easyA[i]);
+                if(easyAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<easyQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                easyQuestions[i] = new Easy(answer[i], (i + 1), easyQ[i]);
+            }
+            if (!answer[easyCount].getCorrect()){
+                points += easyQuestions[easyCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
+        if (detectMid && allow){
+            int lines = countLines("mid");
+            String [] midQ = take(lines, "mid");
+            String [] midA = take(lines, "midAns");
+            Answers [] answer = new Answers [10];
+            int [] midAnswers = new int [midA.length];
+            boolean [] bool = new boolean [midA.length];
+            for (int i = 0; i < midAnswers.length;i++){
+                midAnswers[i] = Integer.parseInt(midA[i]);
+                if(midAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<midQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                midQuestions[i] = new mid(answer[i], (i + 1), midQ[i]);
+            }
+            if (!answer[midCount].getCorrect()){
+                points += midQuestions[midCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
+        if (detectHard && allow){
+            int lines = countLines("hard");
+            String [] hardQ = take(lines, "hard");
+            String [] hardA = take(lines, "hardAns");
+            Answers [] answer = new Answers [10];
+            int [] hardAnswers = new int [hardA.length];
+            boolean [] bool = new boolean [hardA.length];
+            for (int i = 0; i < hardAnswers.length;i++){
+                hardAnswers[i] = Integer.parseInt(hardA[i]);
+                if(hardAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<hardQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                hardQuestions[i] = new Hard(answer[i], (i + 1), hardQ[i]);
+            }
+            if (!answer[hardCount].getCorrect()){
+                points += hardQuestions[hardCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
+        questionCount++;                   
     }//GEN-LAST:event_fakeActionPerformed
 
     private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
-        // TODO add your handling code here:
+        if (detectEasy && allow){
+            int lines = countLines("easy");
+            String [] easyQ = take(lines, "easy");
+            String [] easyA = take(lines, "easyAns");
+            Answers [] answer = new Answers [10];
+            int [] easyAnswers = new int [easyA.length];
+            boolean [] bool = new boolean [easyA.length];
+            for (int i = 0; i < easyAnswers.length;i++){
+                easyAnswers[i] = Integer.parseInt(easyA[i]);
+                if(easyAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<easyQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                easyQuestions[i] = new Easy(answer[i], (i + 1), easyQ[i]);
+            }
+            if (answer[easyCount].getCorrect()){
+                points += easyQuestions[easyCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
+        if (detectMid && allow){
+            int lines = countLines("mid");
+            String [] midQ = take(lines, "mid");
+            String [] midA = take(lines, "midAns");
+            Answers [] answer = new Answers [10];
+            int [] midAnswers = new int [midA.length];
+            boolean [] bool = new boolean [midA.length];
+            for (int i = 0; i < midAnswers.length;i++){
+                midAnswers[i] = Integer.parseInt(midA[i]);
+                if(midAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<midQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                midQuestions[i] = new mid(answer[i], (i + 1), midQ[i]);
+            }
+            if (answer[midCount].getCorrect()){
+                points += midQuestions[midCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
+        if (detectHard && allow){
+            int lines = countLines("hard");
+            String [] hardQ = take(lines, "hard");
+            String [] hardA = take(lines, "hardAns");
+            Answers [] answer = new Answers [10];
+            int [] hardAnswers = new int [hardA.length];
+            boolean [] bool = new boolean [hardA.length];
+            for (int i = 0; i < hardAnswers.length;i++){
+                hardAnswers[i] = Integer.parseInt(hardA[i]);
+                if(hardAnswers[i] == 0){
+                    bool[i] = true;
+                } else {
+                    bool[i] = false;
+            }    
+            }
+            for (int i = 0; i<hardQ.length;i++){
+                answer[i] = new Answers(bool[i]);
+                hardQuestions[i] = new Hard(answer[i], (i + 1), hardQ[i]);
+            }
+            if (answer[hardCount].getCorrect()){
+                points += hardQuestions[hardCount].getPoints();
+            }
+            point.setText("" + points);
+            allow = false;
+        }
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
@@ -171,7 +333,7 @@ public class MainProgram extends javax.swing.JFrame {
         boolean [] bool = new boolean [easyA.length];
         for (int i = 0; i < easyAnswers.length;i++){
             easyAnswers[i] = Integer.parseInt(easyA[i]);
-            if(easyAnswers[0] == 0){
+            if(easyAnswers[i] == 0){
                 bool[i] = true;
             } else {
                 bool[i] = false;
@@ -182,29 +344,78 @@ public class MainProgram extends javax.swing.JFrame {
             easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
         }
        
-        header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
-        if (easyCount > easyQuestions.length - 1){
+       
+        if (easyCount < easyQuestions.length - 1){
             easyCount++;
+            header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
+           
         } else {
             header.setText("No more easy!");
         }
-        
+        detectEasy = true;
+        allow = true;
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
-        int lines = countLines("easy");
-        String [] easyQ = take(lines, "easy");
-        String [] easyA = take(lines, "easyAns");
-        int [] easyAnswers = new int [easyA.length];
-        boolean [] bool = new boolean [easyA.length];
-        for (int i = 0 ; i < easyQ.length; i ++){
-            System.out.println(easyQ[i]);
+        int lines = countLines("mid");
+        String [] midQ = take(lines, "mid");
+        String [] midA = take(lines, "midAns");
+        int [] midAnswers = new int [midA.length];
+        boolean [] bool = new boolean [midA.length];
+        for (int i = 0; i < midAnswers.length;i++){
+            midAnswers[i] = Integer.parseInt(midA[i]);
+            if(midAnswers[i] == 0){
+                bool[i] = true;
+            } else {
+                bool[i] = false;
+            }
         }
-        
+        for (int i = 0; i<midQ.length;i++){
+            Answers answer = new Answers(bool[i]);
+            midQuestions[i] = new mid(answer, (i + 1), midQ[i]);
+        }
+       
+        if (midCount < midQuestions.length - 1){
+            midCount++;
+            header.setText("<html>" + midQuestions[midCount].getQuestion() + "<html>");
+           
+        } else {
+            header.setText("No more mid!");
+        }
+
+        detectMid = true;
+        allow = true;
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
+        int lines = countLines("hard");
+        String [] hardQ = take(lines, "hard");
+        String [] hardA = take(lines, "hardAns");
+        int [] hardAnswers = new int [hardA.length];
+        boolean [] bool = new boolean [hardA.length];
+        for (int i = 0; i < hardAnswers.length;i++){
+            hardAnswers[i] = Integer.parseInt(hardA[i]);
+            if(hardAnswers[i] == 0){
+                bool[i] = true;
+            } else {
+                bool[i] = false;
+            }
+        }
+        for (int i = 0; i<hardQ.length;i++){
+            Answers answer = new Answers(bool[i]);
+            hardQuestions[i] = new Hard(answer, (i + 1), hardQ[i]);
+        }
+       
+        if (hardCount < hardQuestions.length - 1){
+            hardCount++;
+            header.setText("<html>" + hardQuestions[hardCount].getQuestion() + "<html>");
+           
+        } else {
+            header.setText("No more hard!");
+        }
 
+        detectHard = true;
+        allow = true;
     }//GEN-LAST:event_nextHardActionPerformed
 
     /**
@@ -220,10 +431,10 @@ public class MainProgram extends javax.swing.JFrame {
             Scanner fileInput = new Scanner(new File(filename));
             while (fileInput.hasNextLine()){
                 fileInput.nextLine();
-                lineCount++; // Add one to counter 
+                lineCount++; // Add one to counter
             }
             fileInput.close(); // Close scanner
-            
+           
         } catch(IOException e){
             System.out.print("Java Exception" + e);
         }
@@ -310,6 +521,7 @@ public class MainProgram extends javax.swing.JFrame {
     private javax.swing.JButton nextEasy;
     private javax.swing.JButton nextHard;
     private javax.swing.JButton nextMid;
+    private javax.swing.JTextField point;
     private javax.swing.JButton real;
     // End of variables declaration//GEN-END:variables
 }
