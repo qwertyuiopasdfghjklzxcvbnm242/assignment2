@@ -13,6 +13,7 @@ import java.util.Scanner;
  * @author 242353497
  */
 public class MainProgram extends javax.swing.JFrame {
+    int questionNum = 0;
     int easyCount = -1;
     int midCount = -1;
     int hardCount = -1;
@@ -48,7 +49,7 @@ public class MainProgram extends javax.swing.JFrame {
         nextMid = new javax.swing.JButton();
         nextHard = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        qq = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
         point = new javax.swing.JTextField();
 
@@ -101,8 +102,8 @@ public class MainProgram extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Points");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Question");
+        qq.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        qq.setText("Question");
 
         header.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,7 +123,10 @@ public class MainProgram extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(qq, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,16 +141,13 @@ public class MainProgram extends javax.swing.JFrame {
                                         .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(165, 165, 165)
                                         .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(217, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))))
+                        .addContainerGap(217, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(qq, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
@@ -333,6 +334,8 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
+        questionNum++;
+        qq.setText("Question " + questionNum);
         int lines = countLines("easy");
         String [] easyQ = take(lines, "easy");
         String [] easyA = take(lines, "easyAns");
@@ -364,6 +367,8 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
+        questionNum++;
+        qq.setText("Question " + questionNum);
         int lines = countLines("mid");
         String [] midQ = take(lines, "mid");
         String [] midA = take(lines, "midAns");
@@ -395,6 +400,8 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
+        questionNum++;
+        qq.setText("Question " + questionNum);
         int lines = countLines("hard");
         String [] hardQ = take(lines, "hard");
         String [] hardA = take(lines, "hardAns");
@@ -524,11 +531,11 @@ public class MainProgram extends javax.swing.JFrame {
     private javax.swing.JLabel feedback;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton nextEasy;
     private javax.swing.JButton nextHard;
     private javax.swing.JButton nextMid;
     private javax.swing.JTextField point;
+    private javax.swing.JLabel qq;
     private javax.swing.JButton real;
     // End of variables declaration//GEN-END:variables
 }
