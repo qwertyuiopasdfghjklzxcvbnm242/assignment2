@@ -56,6 +56,7 @@ public class MainProgram extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         point = new javax.swing.JTextField();
         feed = new javax.swing.JButton();
+        ifcorrect = new javax.swing.JTextField();
 
         feedback.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -120,6 +121,9 @@ public class MainProgram extends javax.swing.JFrame {
             }
         });
 
+        ifcorrect.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ifcorrect.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,6 +133,8 @@ public class MainProgram extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(qq, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ifcorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +169,9 @@ public class MainProgram extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(qq, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(qq, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ifcorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
@@ -209,7 +217,8 @@ public class MainProgram extends javax.swing.JFrame {
             }
             if (!answer[easyCount].getCorrect()){
                 points += easyQuestions[easyCount].getPoints();
-            }
+                ifcorrect.setText("CORRECT");
+            }  else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false;
         }
@@ -291,7 +300,8 @@ public class MainProgram extends javax.swing.JFrame {
             }
             if (answer[easyCount].getCorrect()){
                 points += easyQuestions[easyCount].getPoints();
-            }
+                ifcorrect.setText("CORRECT");
+            } else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false;
         }
@@ -576,6 +586,7 @@ public class MainProgram extends javax.swing.JFrame {
     private javax.swing.JButton feed;
     private javax.swing.JLabel feedback;
     private javax.swing.JLabel header;
+    private javax.swing.JTextField ifcorrect;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nextEasy;
     private javax.swing.JButton nextHard;
