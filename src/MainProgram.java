@@ -365,6 +365,9 @@ public class MainProgram extends javax.swing.JFrame {
         }
         detectEasy = true;
         allow = true;
+        if (easyCount == 9){
+            nextEasy.setVisible(false);
+        }
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
@@ -399,6 +402,9 @@ public class MainProgram extends javax.swing.JFrame {
 
         detectMid = true;
         allow = true;
+        if (midCount == 9){
+            nextMid.setVisible(false);
+        }
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
@@ -433,6 +439,9 @@ public class MainProgram extends javax.swing.JFrame {
 
         detectHard = true;
         allow = true;
+        if (hardCount == 9){
+            nextHard.setVisible(false);
+        }
     }//GEN-LAST:event_nextHardActionPerformed
 
     /**
