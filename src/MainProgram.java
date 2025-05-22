@@ -196,89 +196,106 @@ public class MainProgram extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakeActionPerformed
+        // If statement
         if (detectEasy && allow){
-            int lines = countLines("easy");
-            String [] easyQ = take(lines, "easy");
-            String [] easyA = take(lines, "easyAns");
-            Answers [] answer = new Answers [10];
-            int [] easyAnswers = new int [easyA.length];
+            // Declare variables
+            int lines = countLines("easy"); 
+            String [] easyQ = take(lines, "easy"); 
+            String [] easyA = take(lines, "easyAns"); 
+            Answers [] answer = new Answers [10]; 
+            int [] easyAnswers = new int [easyA.length]; 
             boolean [] bool = new boolean [easyA.length];
+            // For loop to convert to int
             for (int i = 0; i < easyAnswers.length;i++){
                 easyAnswers[i] = Integer.parseInt(easyA[i]);
-                if(easyAnswers[i] == 0){
+                if(easyAnswers[i] == 0){ // Converts to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate easyQuestions
             for (int i = 0; i<easyQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 easyQuestions[i] = new Easy(answer[i], (i + 1), easyQ[i]);
             }
+            // Detect if correct
             if (!answer[easyCount].getCorrect()){
                 points += easyQuestions[easyCount].getPoints();
                 ifcorrect.setText("CORRECT");
             }  else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
-            allow = false;
+            allow = false; // Set allow false to avoid double inputs
         }
+        // If statement
         if (detectMid && allow){
+            // Declare variables
             int lines = countLines("mid");
             String [] midQ = take(lines, "mid");
             String [] midA = take(lines, "midAns");
             Answers [] answer = new Answers [10];
             int [] midAnswers = new int [midA.length];
             boolean [] bool = new boolean [midA.length];
+            // For loop to convert to int
             for (int i = 0; i < midAnswers.length;i++){
                 midAnswers[i] = Integer.parseInt(midA[i]);
-                if(midAnswers[i] == 0){
+                if(midAnswers[i] == 0){ // Converts to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate midQuestions
             for (int i = 0; i<midQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 midQuestions[i] = new mid(answer[i], (i + 1), midQ[i]);
             }
+            // Detect if correct
             if (!answer[midCount].getCorrect()){
                 points += midQuestions[midCount].getPoints();
             }
             point.setText("" + points);
-            allow = false;
+            allow = false;  // Set allow false to avoid double inputs
         }
+        // If statement
         if (detectHard && allow){
+            // Declare variables
             int lines = countLines("hard");
             String [] hardQ = take(lines, "hard");
             String [] hardA = take(lines, "hardAns");
             Answers [] answer = new Answers [10];
             int [] hardAnswers = new int [hardA.length];
             boolean [] bool = new boolean [hardA.length];
+            // For loop to convert to int
             for (int i = 0; i < hardAnswers.length;i++){
                 hardAnswers[i] = Integer.parseInt(hardA[i]);
-                if(hardAnswers[i] == 0){
+                if(hardAnswers[i] == 0){ // Converts to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate hardQuestions
             for (int i = 0; i<hardQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 hardQuestions[i] = new Hard(answer[i], (i + 1), hardQ[i]);
             }
+            // Detect if correct
             if (!answer[hardCount].getCorrect()){
                 points += hardQuestions[hardCount].getPoints();
             }
             point.setText("" + points);
-            allow = false;
+            allow = false; // Set allow false to avoid double inputs
         }
-        questionCount++;  
+        questionCount++;  // Increase question counter
+        // Set detections to false to avoid double inputs
         detectEasy = false;
         detectMid = false;
         detectHard = false;
     }//GEN-LAST:event_fakeActionPerformed
 
     private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
+        // If statement
         if (detectEasy && allow){
             int lines = countLines("easy");
             String [] easyQ = take(lines, "easy");
@@ -286,199 +303,228 @@ public class MainProgram extends javax.swing.JFrame {
             Answers [] answer = new Answers [10];
             int [] easyAnswers = new int [easyA.length];
             boolean [] bool = new boolean [easyA.length];
+            // For loop to turn to int
             for (int i = 0; i < easyAnswers.length;i++){
                 easyAnswers[i] = Integer.parseInt(easyA[i]);
-                if(easyAnswers[i] == 0){
+                if(easyAnswers[i] == 0){ // Convert to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate easyQuestions
             for (int i = 0; i<easyQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 easyQuestions[i] = new Easy(answer[i], (i + 1), easyQ[i]);
             }
+            // Detect if correct
             if (answer[easyCount].getCorrect()){
                 points += easyQuestions[easyCount].getPoints();
                 ifcorrect.setText("CORRECT");
             } else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
-            allow = false;
+            allow = false; // Set to false to avoid double inputs
         }
+        // if statement
         if (detectMid && allow){
+            // Declare variables
             int lines = countLines("mid");
             String [] midQ = take(lines, "mid");
             String [] midA = take(lines, "midAns");
             Answers [] answer = new Answers [10];
             int [] midAnswers = new int [midA.length];
             boolean [] bool = new boolean [midA.length];
+            // For loop to convert to int 
             for (int i = 0; i < midAnswers.length;i++){
                 midAnswers[i] = Integer.parseInt(midA[i]);
-                if(midAnswers[i] == 0){
+                if(midAnswers[i] == 0){ // Convert to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate midQuestions
             for (int i = 0; i<midQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 midQuestions[i] = new mid(answer[i], (i + 1), midQ[i]);
             }
+            // Detect if correct
             if (answer[midCount].getCorrect()){
                 points += midQuestions[midCount].getPoints();
             }
             point.setText("" + points);
-            allow = false;
+            allow = false; // Set allow false to avoid double inputs
         }
+        // If statement
         if (detectHard && allow){
+            // Declare variables
             int lines = countLines("hard");
             String [] hardQ = take(lines, "hard");
             String [] hardA = take(lines, "hardAns");
             Answers [] answer = new Answers [10];
             int [] hardAnswers = new int [hardA.length];
             boolean [] bool = new boolean [hardA.length];
+            // if statement to convert to int
             for (int i = 0; i < hardAnswers.length;i++){
                 hardAnswers[i] = Integer.parseInt(hardA[i]);
-                if(hardAnswers[i] == 0){
+                if(hardAnswers[i] == 0){ // Convert to boolean
                     bool[i] = true;
                 } else {
                     bool[i] = false;
             }    
             }
+            // For loop to instiantiate hardQuestions
             for (int i = 0; i<hardQ.length;i++){
                 answer[i] = new Answers(bool[i]);
                 hardQuestions[i] = new Hard(answer[i], (i + 1), hardQ[i]);
             }
+            // Detect if correct
             if (answer[hardCount].getCorrect()){
                 System.out.print("throguh");
                 points += hardQuestions[hardCount].getPoints();
             }
             point.setText("" + points);
-            allow = false;
+            allow = false; // Set allow to false to aviod double inputs
         }
+        // Set all detection to false to avoid double inputs
         detectEasy = false;
         detectMid = false;
         detectHard = false;
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
-
+        // Declare variables
         int lines = countLines("easy");
         String [] easyQ = take(lines, "easy");
         String [] easyA = take(lines, "easyAns");
         int [] easyAnswers = new int [easyA.length];
         boolean [] bool = new boolean [easyA.length];
+        // Convert to int
         for (int i = 0; i < easyAnswers.length;i++){
             easyAnswers[i] = Integer.parseInt(easyA[i]);
-            if(easyAnswers[i] == 0){
+            if(easyAnswers[i] == 0){ // Convert to boolean
                 bool[i] = true;
             } else {
                 bool[i] = false;
             }
         }
+        // Instintiate easyQuestions
         for (int i = 0; i<easyQ.length;i++){
             Answers answer = new Answers(bool[i]);
             easyQuestions[i] = new Easy(answer, (i + 1), easyQ[i]);
         }
        
-       
+        // if statement to prevent out of index
         if (easyCount < easyQuestions.length - 1){
+            // Increase counters
              questionNum++;
              qq.setText("Question " + questionNum);
             easyCount++;
+            // Set text
             header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
            
         } else {
-            header.setText("No more easy!");
+            header.setText("No more easy!"); // Done msg
         }
+        // Set all detection to true 
         detectEasy = true;
         allow = true;
-        if (easyCount == 9){
+        // Disappear after 10 questions
+        if (questionNum == 10){
+            nextMid.setVisible(false);
             nextEasy.setVisible(false);
-            if (midCount == 9 && easyCount == 9 && hardCount == 9){
-                feed.setVisible(true);
-            }
+            nextHard.setVisible(false);
+            feed.setVisible(true); 
         }
+        
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
-
+        // Declare variables
         int lines = countLines("mid");
         String [] midQ = take(lines, "mid");
         String [] midA = take(lines, "midAns");
         int [] midAnswers = new int [midA.length];
         boolean [] bool = new boolean [midA.length];
+        // For loop to convert to int
         for (int i = 0; i < midAnswers.length;i++){
             midAnswers[i] = Integer.parseInt(midA[i]);
-            if(midAnswers[i] == 0){
+            if(midAnswers[i] == 0){ // convert to boolean
                 bool[i] = true;
             } else {
                 bool[i] = false;
             }
         }
+        // Instiantiate midQuestions
         for (int i = 0; i<midQ.length;i++){
             Answers answer = new Answers(bool[i]);
             midQuestions[i] = new mid(answer, (i + 1), midQ[i]);
         }
-       
+        // Prevent out of index
         if (midCount < midQuestions.length - 1){
+            // Increase counters
             questionNum++;
             qq.setText("Question " + questionNum);
             midCount++;
-            header.setText("<html>" + midQuestions[midCount].getQuestion() + "<html>");
+            header.setText("<html>" + midQuestions[midCount].getQuestion() + "<html>"); // Set text
            
         } else {
-            header.setText("No more mid!");
+            header.setText("No more mid!"); // Finished msg
         }
-
+        // Set detection to true
         detectMid = true;
         allow = true;
-        if (midCount == 9){
+        // End at 10 questions
+        if (questionNum == 10){
             nextMid.setVisible(false);
-            if (midCount == 9 && easyCount == 9 && hardCount == 9){
-                feed.setVisible(true);
-            }
+            nextEasy.setVisible(false);
+            nextHard.setVisible(false);
+            feed.setVisible(true); 
         }
         
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
-
+        // Declare variables
         int lines = countLines("hard");
         String [] hardQ = take(lines, "hard");
         String [] hardA = take(lines, "hardAns");
         int [] hardAnswers = new int [hardA.length];
         boolean [] bool = new boolean [hardA.length];
+        // For loop to conver to int
         for (int i = 0; i < hardAnswers.length;i++){
             hardAnswers[i] = Integer.parseInt(hardA[i]);
-            if(hardAnswers[i] == 0){
+            if(hardAnswers[i] == 0){ // Convert to boolean
                 bool[i] = true;
             } else {
                 bool[i] = false;
             }
         }
+        // Instiantiate hardQuestions
         for (int i = 0; i<hardQ.length;i++){
             Answers answer = new Answers(bool[i]);
             hardQuestions[i] = new Hard(answer, (i + 1), hardQ[i]);
         }
-       
+        // Prevent out of index
         if (hardCount < hardQuestions.length - 1){
+            // Increases counter
             questionNum++;
               qq.setText("Question " + questionNum);
             hardCount++;
-            header.setText("<html>" + hardQuestions[hardCount].getQuestion() + "<html>");
+            header.setText("<html>" + hardQuestions[hardCount].getQuestion() + "<html>"); // Set text 
            
         } else {
-            header.setText("No more hard!");
+            header.setText("No more hard!"); // Done msg
         }
-
+        // Set detection to true
         detectHard = true;
         allow = true;
-        if (hardCount == 9){
+        // End at 10 questions
+        if (questionNum == 10){
+            nextMid.setVisible(false);
+            nextEasy.setVisible(false);
             nextHard.setVisible(false);
-            if (midCount == 9 && easyCount == 9 && hardCount == 9){
-                feed.setVisible(true);
-            }
+            feed.setVisible(true); 
         }
     }//GEN-LAST:event_nextHardActionPerformed
 
