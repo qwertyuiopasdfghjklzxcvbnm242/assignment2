@@ -99,7 +99,7 @@ public class feedback extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(81, 81, 81))
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(106, 106, 106)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

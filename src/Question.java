@@ -44,6 +44,7 @@ public class Question {
     public int getPoints(){
         return 0;
     }
+    
     public String getQuestion(){
         return question;
     }

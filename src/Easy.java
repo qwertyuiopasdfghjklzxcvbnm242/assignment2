@@ -21,6 +21,7 @@ public class Easy extends Question{
     public String getQuestion(){
         return easyQuestion;
     }
+        @Override
     public int getPoints(){
         
         return EASY_POINTS;

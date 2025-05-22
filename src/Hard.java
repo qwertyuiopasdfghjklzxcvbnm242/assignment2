@@ -20,6 +20,7 @@ public class Hard extends Question {
     public String getQuestion(){
         return hardQuestion;
     }
+        @Override
     public int getPoints(){
         System.out.print(points);
         return HARD_POINTS;

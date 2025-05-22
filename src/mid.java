@@ -17,11 +17,13 @@ public class mid extends Question{
         this.points = MID_POINTS;
     }
     
+    
     public String getQuestion(){
         return midQuestion;
     }
+    
+    @Override
     public int getPoints(){
-        
         return MID_POINTS;
     }
     
