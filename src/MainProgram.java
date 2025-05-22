@@ -17,7 +17,7 @@ public class MainProgram extends javax.swing.JFrame {
     int easyCount = -1;
     int midCount = -1;
     int hardCount = -1;
-    int points = 0;
+    public static int points = 0;
     int questionCount = 0;
     boolean allow = true;
     boolean detectEasy = false;
@@ -141,7 +141,7 @@ public class MainProgram extends javax.swing.JFrame {
                                         .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(165, 165, 165)
                                         .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(217, Short.MAX_VALUE))))
+                        .addContainerGap(163, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
