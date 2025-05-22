@@ -156,7 +156,9 @@ public class userFeedback extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         String addedFeedback = userInput.getText();
+        // if statement to see if text field is empty, will not record if empty
         if (!addedFeedback.trim().isEmpty()) {
 
             // Write to file
@@ -169,6 +171,7 @@ public class userFeedback extends javax.swing.JFrame {
             } catch (IOException p){
                 System.out.print("Java Exception " + p);
             }
+            //after entered button pressed set text to original
             userInput.setText("");
         }
 

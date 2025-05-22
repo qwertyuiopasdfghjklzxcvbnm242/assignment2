@@ -8,6 +8,7 @@
  * @author 344165857
  */
 public class feedback extends javax.swing.JFrame {
+    //declaration of variables 
      int points = MainProgram.points;
     /**
      * Creates new form feedback
@@ -128,22 +129,25 @@ public class feedback extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //Button to main program 
         new MainProgram().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //Button to user feedback
          new userFeedback().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        //Output the points the user scored
         score.setText("You Scored: " + points);
         
         
-  
+        // if and else if statment to provide the apporaite feedback
         if(points >= 25){
             back.setText("Good job on spoting fake news!");
         }
