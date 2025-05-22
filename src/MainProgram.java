@@ -17,7 +17,7 @@ public class MainProgram extends javax.swing.JFrame {
     int easyCount = -1;
     int midCount = -1;
     int hardCount = -1;
-    int points = 0;
+    public static int points = 0;
     int questionCount = 0;
     boolean allow = true;
     boolean detectEasy = false;

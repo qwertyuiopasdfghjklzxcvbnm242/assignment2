@@ -8,7 +8,7 @@
  * @author 344165857
  */
 public class feedback extends javax.swing.JFrame {
-
+     int points = MainProgram.points;
     /**
      * Creates new form feedback
      */
@@ -26,20 +26,21 @@ public class feedback extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        score = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        back = new javax.swing.JTextArea();
 
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("You scored: ");
+        score.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        score.setText("You Scored: ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Things you can work on: ");
@@ -61,14 +62,17 @@ public class feedback extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
         jButton3.setText("Get feedback");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        back.setColumns(20);
+        back.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        back.setRows(5);
+        jScrollPane2.setViewportView(back);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,8 +87,8 @@ public class feedback extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(144, 144, 144))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(177, 525, Short.MAX_VALUE))
+                        .addComponent(score)
+                        .addGap(177, 523, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -95,21 +99,21 @@ public class feedback extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(81, 81, 81))
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel1)
+                .addComponent(score)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -136,8 +140,34 @@ public class feedback extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        score.setText("You Scored: " + points);
         
-      
+        
+  
+        if(points >= 25){
+            back.setText("Good job on spoting fake news!");
+        }
+        else if(points>= 10){
+            String textBlock = """
+                    Things you can improve on: 
+                    1. Look for emotional red flags
+                    2. Use fact checking tools and services
+                    3. Verify the account
+                     """;
+            
+            back.setText(textBlock);
+       }
+        else{
+            String textBlock = """
+                    Oh no... You can ask yourself:
+                    Is this a credible SOURCE?
+                    Is the PERSPECTIVE biased?
+                    Are OTHER sources reporting the same story?
+                    Is the story TIMELY?
+                     """;
+            
+            back.setText(textBlock);
+        } 
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -177,13 +207,14 @@ public class feedback extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea back;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
 }
