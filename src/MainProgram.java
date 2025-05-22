@@ -252,8 +252,9 @@ public class MainProgram extends javax.swing.JFrame {
             }
             // Detect if correct
             if (!answer[midCount].getCorrect()){
+                ifcorrect.setText("CORRECT");
                 points += midQuestions[midCount].getPoints();
-            }
+            }  else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false;  // Set allow false to avoid double inputs
         }
@@ -282,8 +283,9 @@ public class MainProgram extends javax.swing.JFrame {
             }
             // Detect if correct
             if (!answer[hardCount].getCorrect()){
+                ifcorrect.setText("CORRECT");
                 points += hardQuestions[hardCount].getPoints();
-            }
+            }  else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false; // Set allow false to avoid double inputs
         }
@@ -350,8 +352,9 @@ public class MainProgram extends javax.swing.JFrame {
             }
             // Detect if correct
             if (answer[midCount].getCorrect()){
+                ifcorrect.setText("CORRECT");
                 points += midQuestions[midCount].getPoints();
-            }
+            }  else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false; // Set allow false to avoid double inputs
         }
@@ -380,9 +383,9 @@ public class MainProgram extends javax.swing.JFrame {
             }
             // Detect if correct
             if (answer[hardCount].getCorrect()){
-                System.out.print("throguh");
+                ifcorrect.setText("CORRECT");
                 points += hardQuestions[hardCount].getPoints();
-            }
+            } else ifcorrect.setText("INCORRECT");
             point.setText("" + points);
             allow = false; // Set allow to false to aviod double inputs
         }
