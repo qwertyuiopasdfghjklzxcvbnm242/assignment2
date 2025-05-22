@@ -334,8 +334,7 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_realActionPerformed
 
     private void nextEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEasyActionPerformed
-        questionNum++;
-        qq.setText("Question " + questionNum);
+
         int lines = countLines("easy");
         String [] easyQ = take(lines, "easy");
         String [] easyA = take(lines, "easyAns");
@@ -356,6 +355,8 @@ public class MainProgram extends javax.swing.JFrame {
        
        
         if (easyCount < easyQuestions.length - 1){
+             questionNum++;
+             qq.setText("Question " + questionNum);
             easyCount++;
             header.setText("<html>" + easyQuestions[easyCount].getQuestion() + "<html>");
            
@@ -367,8 +368,7 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_nextEasyActionPerformed
 
     private void nextMidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextMidActionPerformed
-        questionNum++;
-        qq.setText("Question " + questionNum);
+
         int lines = countLines("mid");
         String [] midQ = take(lines, "mid");
         String [] midA = take(lines, "midAns");
@@ -388,6 +388,8 @@ public class MainProgram extends javax.swing.JFrame {
         }
        
         if (midCount < midQuestions.length - 1){
+            questionNum++;
+            qq.setText("Question " + questionNum);
             midCount++;
             header.setText("<html>" + midQuestions[midCount].getQuestion() + "<html>");
            
@@ -400,8 +402,7 @@ public class MainProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
-        questionNum++;
-        qq.setText("Question " + questionNum);
+
         int lines = countLines("hard");
         String [] hardQ = take(lines, "hard");
         String [] hardA = take(lines, "hardAns");
@@ -421,6 +422,8 @@ public class MainProgram extends javax.swing.JFrame {
         }
        
         if (hardCount < hardQuestions.length - 1){
+            questionNum++;
+              qq.setText("Question " + questionNum);
             hardCount++;
             header.setText("<html>" + hardQuestions[hardCount].getQuestion() + "<html>");
            
