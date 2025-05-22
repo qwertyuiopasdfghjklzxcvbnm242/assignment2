@@ -23,7 +23,8 @@ public class MainProgram extends javax.swing.JFrame {
     boolean detectEasy = false;
     boolean detectMid = false;
     boolean detectHard = false;
-    Easy [] easyQuestions = new Easy[10];
+    Question [] easyQuestions = new Question [10];
+
     mid [] midQuestions = new mid[10];
     Hard [] hardQuestions = new Hard[10];
     
