@@ -26,11 +26,13 @@ public class MainProgram extends javax.swing.JFrame {
     Easy [] easyQuestions = new Easy[10];
     mid [] midQuestions = new mid[10];
     Hard [] hardQuestions = new Hard[10];
+    
     /**
      * Creates new form NewJFrame
      */
     public MainProgram() {
         initComponents();
+        feed.setVisible(false);
     }
 
     /**
@@ -52,6 +54,7 @@ public class MainProgram extends javax.swing.JFrame {
         qq = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
         point = new javax.swing.JTextField();
+        feed = new javax.swing.JButton();
 
         feedback.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -108,18 +111,18 @@ public class MainProgram extends javax.swing.JFrame {
         header.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        feed.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        feed.setText("Feedback Page");
+        feed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(nextEasy)
-                .addGap(140, 140, 140)
-                .addComponent(nextMid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nextHard)
-                .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,12 +139,24 @@ public class MainProgram extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(158, 158, 158)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(165, 165, 165)
                                         .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(217, Short.MAX_VALUE))))
+                        .addContainerGap(189, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(nextEasy)
+                .addGap(178, 178, 178)
+                .addComponent(nextMid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nextHard)
+                .addGap(68, 68, 68))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(275, 275, 275)
+                .addComponent(feed, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,12 +173,14 @@ public class MainProgram extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fake, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(real, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextMid, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextHard, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(feed, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -367,6 +384,9 @@ public class MainProgram extends javax.swing.JFrame {
         allow = true;
         if (easyCount == 9){
             nextEasy.setVisible(false);
+            if (midCount == 9 && easyCount == 9 && hardCount == 9){
+                feed.setVisible(true);
+            }
         }
     }//GEN-LAST:event_nextEasyActionPerformed
 
@@ -404,7 +424,11 @@ public class MainProgram extends javax.swing.JFrame {
         allow = true;
         if (midCount == 9){
             nextMid.setVisible(false);
+            if (midCount == 9 && easyCount == 9 && hardCount == 9){
+                feed.setVisible(true);
+            }
         }
+        
     }//GEN-LAST:event_nextMidActionPerformed
 
     private void nextHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHardActionPerformed
@@ -441,8 +465,16 @@ public class MainProgram extends javax.swing.JFrame {
         allow = true;
         if (hardCount == 9){
             nextHard.setVisible(false);
+            if (midCount == 9 && easyCount == 9 && hardCount == 9){
+                feed.setVisible(true);
+            }
         }
     }//GEN-LAST:event_nextHardActionPerformed
+
+    private void feedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedActionPerformed
+        new feedback().setVisible(true); // Set as visible
+        this.setVisible(false); // Set as not visible
+    }//GEN-LAST:event_feedActionPerformed
 
     /**
      * Counts line in file
@@ -540,6 +572,7 @@ public class MainProgram extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fake;
+    private javax.swing.JButton feed;
     private javax.swing.JLabel feedback;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel1;
