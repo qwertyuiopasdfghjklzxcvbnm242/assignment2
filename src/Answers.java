@@ -19,11 +19,17 @@ public class Answers {
             numCorrect += 1 ;
         } 
     }
-    
+    /**
+     * This method returns numCorrect
+     * @return numCorrect
+     */
     public int getNumCorrect(){
         return numCorrect;
     }
-    
+    /**
+     * This method returns correct
+     * @return correct
+     */
     public boolean getCorrect(){
         return correct;
     }

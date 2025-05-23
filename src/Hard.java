@@ -16,11 +16,18 @@ public class Hard extends Question {
         this.hardQuestion = hardQuestion;
         this.points = HARD_POINTS;
     } 
-    
+    /**
+     * This method return questions
+     * @return hardQuestion
+     */
     public String getQuestion(){
         return hardQuestion;
     }
-        @Override
+    /**
+     * This method return points
+     * @return HARD_POINTS
+     */
+    @Override
     public int getPoints(){
         System.out.print(points);
         return HARD_POINTS;

@@ -18,10 +18,18 @@ public class Easy extends Question{
         this.easyQuestion = easyQuestion;
         this.points = EASY_POINTS;
     }
+    /**
+     * This method returns questions
+     * @return easyQuestion
+     */
     public String getQuestion(){
         return easyQuestion;
     }
-        @Override
+    /**
+     * This method return points
+     * @return points
+     */
+    @Override
     public int getPoints(){
         
         return EASY_POINTS;

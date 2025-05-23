@@ -41,10 +41,17 @@ public class Question {
     public static int getNumQuestions(){
         return numQuestions;
     }
+    /**
+     * This method gets points
+     * @return 0
+     */
     public int getPoints(){
         return 0;
     }
-    
+    /**
+     * This method gets questions
+     * @return question
+     */
     public String getQuestion(){
         return question;
     }
